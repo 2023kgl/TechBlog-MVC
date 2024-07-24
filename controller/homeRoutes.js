@@ -1,7 +1,109 @@
-//homeRoutes, is for direct to correct html page
+const router = require('express').Router();
+const withAuth = require('../utils/auth');
+const { Post , User , Comment } = require('../model');
 
-// check if user is logged in, with Auth, before going into database for the data
-// otherwise, re-direct to login page
+// TO RENDER HOME PAGE
+router.get('/', async (req, res) => {
+  try {
+    // GET ALL POST FOR USER LOGGED IN
+    const postData = await Post.findAll({
+      include: [{ model: User, attributes: ["name"]}],
+    })
+// CONVERTING POST DATA TO A JS OBJECT 
+    const posts = postData.map((post) => post.get({plain: true}))
+    res.render('home', {
+      posts,
+      logged_in: req.session.logged_in
+    })
+} catch (err) {
+    res.status(500).json(err)
+    console.log(err)
+}    
+});
 
-// if logged in , redirect to home page
+// IF LOGGED IN REDIRECT TO DASHBOARD
+router.get('/login', (req, res) => {
+  if (req.session.logged_in){
+    res.redirect('/dashboard')
+    return
+  }
+  res.render('login')
+})
 
+// ONCE SIGNED UP REDIRECT TO DASHBOARD
+router.get('/signup', (req, res) => {
+if (req.session.logged_in){
+  res.redirect('dashboard')
+  return
+}
+res.render('signup')
+})
+
+// TO RENDER NEW POST PAGE
+router.get('/newpost', (req, res) => {
+  if (req.session.logged_in){
+    res.render('newpost')
+    return
+  }
+  res.redirect('/login')
+})
+
+// TO RENDER SINGLE POST 
+router.get('/post/:id', withAuth, async (req,res) => {
+  try {
+//FINDING POST BY ID AND ITS USERNAME AND COMMENTS ASSOCIATED WITH THIS POST
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        { model : User, attributes: ['username']},
+        { model: Comment, include: [{ model: User, attributes: ['username']}]}
+      ]
+    })
+// CONVERTING POSTDATA AS JS OBJECT
+// RENDERING THE POST TEMPLATE WITH THE POST DATA
+    const post = postData.map((post) => post.get({plain: true}))
+    res.render(
+      'post',
+      {...post, logged_in: req.session.logged_in}
+    )
+  }catch (err) {
+    res.status(500).json(err)
+  }
+})
+
+// TO RENDER NEW POST
+router.get('/editpost/:id', async (req, res) => {
+try {
+  const postData = await Post.findByPk(req.params.id, {
+    include: [
+      { model: User, attributes: ['username']},
+      { model: Comment, include: [{ model: User, attributes: ['username']}]}
+      ]
+  })
+  const post = postData.get({plain: true})
+  res.render('editpost', { ...post, logged_in: req.session.logged_in } )
+} catch (error) {
+  res.status(500).json(err)
+}
+})
+
+// RENDER USER DASHBOARD
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+
+//FIND ALL POST FROM CURRENT LOGGED IN USER
+    const postData = await Post.findAll({
+      where: {user_id: req.session.user_id},
+      include: [{ model: User, attributes: ['username']}]
+    })
+
+// CONVERT POST DATA AS JS OBJECT
+    const post = postData.map((post) => post.get({plain: true}))
+    res.render('dashboard', { post , logged_in: req.session.logged_in})
+
+  } catch (error) {
+    res.status(500).json(err)
+  }
+})
+
+
+  module.exports = router;

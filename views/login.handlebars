@@ -1,17 +1,22 @@
-<h2>Login</h2>
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+  <div class="row">
 
-<div class="col-md-3">
+<div class="col">
+  <h2>LOG IN</h2>
+</div>
 
-      <form>
+<div class="col">
+
+      <form class="login-form">
 
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="email-login" aria-describedby="emailHelp">
+          <label for="email-login" class="email-login">Email address</label>
+          <input type="text" class="email-login" id="email-login" aria-describedby="emailHelp">
         </div>
 
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password-login">
+          <label for="password-login" class="password-login">Password</label>
+          <input type="password" class="password-login" id="password-login" aria-describedby="emailHelp">
         </div>
 
         <button type="submit" class="btn btn-primary">Login</button>
@@ -20,5 +25,8 @@
 
 </div>
 
-<script src="../public/js/login.js"></script>
+</div>
+</div>
+
+<script src="./js/login.js"></script>
 

@@ -10,8 +10,8 @@
 
 <body>
     <div>
-        <header>
-                <nav class="navbar navbar-light bg-light container-fluid">
+        <header class="bg-dark text-white py-1" style="position: fixed; top: 0; width: 100%;">
+                <nav>
 
                     <h1 class="bg-ligh">TECH BLOG</h1>
 
@@ -26,17 +26,30 @@
                 </nav>
         </header>
 
-        <main>
+        <main class="container container-fluid mt-5">
             {{{body}}}
         </main>
 
-        <footer>
-            <a href="./home.handlebars">HOME</a>
-        </footer>
     </div>
 
     {{#if logged_in}}
     <script src="../../public/js/logout.js"></script>
     {{/if}}
+
+<footer class="bg-dark text-white py-2" style="position: fixed; bottom: 0; width: 100%;">
+
+<div class="container">
+    <a href="./home.handlebars">HOME</a>
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center">
+        <h5>&copy; Designed by Karina Gonzalez</h5>
+        <h6>&copy; 2024 All Rights Reserved.</h6>
+      </div>
+    </div> 
+  </div>
+
+</footer>
+
 </body>
+
 </html>

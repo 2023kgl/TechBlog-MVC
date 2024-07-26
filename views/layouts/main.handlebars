@@ -11,18 +11,16 @@
 <body>
     <div>
         <header class="bg-dark text-white py-1" style="position: fixed; top: 0; width: 100%;">
+            <h1 class="bg-ligh">TECH BLOG</h1>
                 <nav>
-
-                    <h1 class="bg-ligh">TECH BLOG</h1>
-
-                    {{#if logged_in}}
-                        <a href = "/profile">HOME</a>
-                        <a href = "/dashboard">DASHBOARD</a>
-                    {{/if}}
-
                         <a href = "/login">LOG IN</a>
-
+                        |
                         <a href = "/signup">SIGN UP</a>
+
+                        {{!-- {{#if logged_in}}
+                        |
+                        <a href = "/dashboard">DASHBOARD</a>
+                    {{/if}} --}}
                 </nav>
         </header>
 
@@ -32,14 +30,14 @@
 
     </div>
 
-    {{#if logged_in}}
+    {{!-- {{#if logged_in}}
+    <button class="logout" id="logout">LOGOUT</button>
     <script src="../../public/js/logout.js"></script>
-    {{/if}}
+    {{/if}} --}}
 
 <footer class="bg-dark text-white py-2" style="position: fixed; bottom: 0; width: 100%;">
 
 <div class="container">
-    <a href="./home.handlebars">HOME</a>
     <div class="row justify-content-center">
       <div class="col-md-6 text-center">
         <h5>&copy; Designed by Karina Gonzalez</h5>

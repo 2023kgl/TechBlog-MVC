@@ -23,7 +23,6 @@ router.post('/login', async (req, res) => {
       res
       .status(400)
       .json({ message: "Incorrect email"});
-      console.log('-----------------------------------------------------');
     return;
     }
 
@@ -85,11 +84,11 @@ console.log('User already exists with email:', email);
 
   return res.status(400).json({ message: 'User already exists' });
   }
-  const hashedPassword = await bcrypt.hash(password, 10);
+  // const hashedPassword = await bcrypt.hash(password, 10);
   const newUser = new User({
     name,
     email,
-    password: hashedPassword
+    password
   });
 
 console.log('New user:', newUser);

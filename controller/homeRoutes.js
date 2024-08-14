@@ -89,20 +89,44 @@ console.log('----------------- HOME ROUTES LINE 87-------------')
 
 
 // RENDER DASHBOARD
+// router.get('/dashboard', withAuth, async (req, res) => {
+//   try {
+//     const postData = await Post.findAll({
+//       where: {user_id: req.session.user_id},
+//       include: [{ model: User, attributes: ['name']}]
+//     })
+// console.log('HOME ROUTES LINE 98 User ID in session:', req.session.user_id);
+// console.log('---- HOME ROUTES 99-----',postData);
+
+//     const post = postData.map((post) => post.get({plain: true}))
+//     res.render('dashboard', { post , logged_in: req.session.logged_in})
+//   } catch (err) {
+//     console.log('----------------- HOME ROUTES LINE 104-------------', err)
+//     res.status(500).json(err)
+//   }
+// })
+
+// RENDER DASHBOARD
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const postData = await Post.findAll({
-      where: {user_id: req.session.user_id},
-      include: [{ model: User, attributes: ['name']}]
-    })
-console.log('HOME ROUTES LINE 98 User ID in session:', req.session.user_id);
-console.log('---- HOME ROUTES 99-----',postData);
+    console.log('HOME ROUTES: User ID in session:', req.session.user_id);
 
-    const post = postData.map((post) => post.get({plain: true}))
-    res.render('dashboard', { post , logged_in: req.session.logged_in})
+    const postData = await Post.findAll({
+      where: { user_id: req.session.user_id },
+      include: [{ model: User, attributes: ['name'] }],
+    });
+
+    console.log('HOME ROUTES: Fetched postData:', postData);
+
+    const posts = postData.map((post) => post.get({ plain: true }));
+
+    console.log('HOME ROUTES: Posts after mapping:', posts);
+
+    res.render('dashboard', { posts, logged_in: req.session.logged_in });
   } catch (err) {
-    console.log('----------------- HOME ROUTES LINE 104-------------', err)
-    res.status(500).json(err)
+    console.error('HOME ROUTES: Error in rendering dashboard:', err);
+    res.status(500).json(err);
   }
-})
+});
+
 module.exports = router;

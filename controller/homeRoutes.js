@@ -2,48 +2,47 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const { Post , User , Comment } = require('../model');
 
+
 // TO RENDER HOME PAGE
-//
 router.get('/', async (req, res) => {
   try {
     // GET ALL POST FOR USER LOGGED IN
     const postData = await Post.findAll({
       include: [{ model: User, attributes: ["name"]}],
     })
-// CONVERTING POST DATA TO A JS OBJECT 
     const posts = postData.map((post) => post.get({plain: true}))
     res.render('home', {
       posts,
       logged_in: req.session.logged_in
     })
-} catch (err) {
+  } catch (err) {
     res.status(500).json(err)
-    console.log('----------------- HOME ROUTES LINE 20-------------')
-}    
-});
+console.log('----------------- HOME ROUTES LINE 20-------------')
+  }    
+})
+
 
 // IF LOGGED IN REDIRECT TO DASHBOARD
-//
 router.get('/login', (req, res) => {
-  if (req.session.logged_in){
-    res.redirect('dashboard')
-    return
-  }
+  // if (req.session.logged_in){
+  //   res.redirect('dashboard')
+  //   return
+  // }
   res.render('login')
 })
 
+
 // ONCE SIGNED UP REDIRECT TO DASHBOARD
-//
 router.get('/signup', (req, res) => {
-if (req.session.logged_in){
-  res.redirect('signup')
-  return
-}
-res.render('signup')
+  // if (req.session.logged_in){
+  //   res.redirect('signup')
+  //   return
+  // }
+  res.render('signup')
 })
 
+
 // TO RENDER NEW POST PAGE
-//
 router.get('/newpost', (req, res) => {
   if (req.session.logged_in){
     res.render('newpost')
@@ -52,33 +51,26 @@ router.get('/newpost', (req, res) => {
   res.redirect('/login')
 })
 
+
 // TO RENDER SINGLE POST 
-//
 router.get('/post/:id', withAuth, async (req,res) => {
   try {
-//FINDING POST BY ID AND ITS USERNAME AND COMMENTS ASSOCIATED WITH THIS POST
     const postData = await Post.findByPk(req.params.id, {
       include: [
         { model : User, attributes: ['username']},
         { model: Comment, include: [{ model: User, attributes: ['username']}]}
       ]
     })
-// CONVERTING POSTDATA AS JS OBJECT
-// RENDERING THE POST TEMPLATE WITH THE POST DATA
     const post = postData.map((post) => post.get({plain: true}))
-    res.render(
-      'post',
-      {...post, logged_in: req.session.logged_in}
-    )
+    res.render( 'post', {...post, logged_in: req.session.logged_in} )
   }catch (err) {
     res.status(500).json(err)
-    console.log('----------------- HOME ROUTES LINE 70-------------')
-
+console.log('----------------- HOME ROUTES LINE 68-------------')
   }
 })
 
+
 // TO RENDER NEW POST
-//
 router.get('/editpost/:id', async (req, res) => {
 try {
   const postData = await Post.findByPk(req.params.id, {
@@ -91,32 +83,26 @@ try {
   res.render('editpost', { ...post, logged_in: req.session.logged_in } )
 } catch (error) {
   res.status(500).json(err)
-  console.log('----------------- HOME ROUTES LINE 88-------------')
-
-}
+console.log('----------------- HOME ROUTES LINE 87-------------')
+  }
 })
 
-// RENDER USER DASHBOARD
-//
+
+// RENDER DASHBOARD
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-
-//FIND ALL POST FROM CURRENT LOGGED IN USER
     const postData = await Post.findAll({
       where: {user_id: req.session.user_id},
-      include: [{ model: User, attributes: ['username']}]
+      include: [{ model: User, attributes: ['name']}]
     })
-console.log('----109-----',postData);
+console.log('HOME ROUTES LINE 98 User ID in session:', req.session.user_id);
+console.log('---- HOME ROUTES 99-----',postData);
 
-// CONVERT POST DATA AS JS OBJECT
     const post = postData.map((post) => post.get({plain: true}))
-
     res.render('dashboard', { post , logged_in: req.session.logged_in})
-
   } catch (err) {
+    console.log('----------------- HOME ROUTES LINE 104-------------', err)
     res.status(500).json(err)
-    console.log('----------------- HOME ROUTES LINE 118-------------')
-
   }
 })
 module.exports = router;

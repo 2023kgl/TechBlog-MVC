@@ -9,13 +9,14 @@ router.get('/', async (req, res) => {
     res.status(200).json(user);
   } catch (err) {
     res.status(500).json(err);
+console.log('---------------- USER ROUTES LINE 12----------------------')
   }
 })
+
 
 // LOG IN USER 
 router.post('/login', async (req, res) => {
   try {
-
     const userData = await User.findOne({ where: {email:req.body.email}})
     console.log(userData);
 
@@ -44,12 +45,12 @@ router.post('/login', async (req, res) => {
     console.log('loggedIn')
     });
 
-    } catch (err) {
-      res.status(400).json(err)
-    }   
-     
-  });
+  } catch (err) {
+    res.status(400).json(err)
+  }   
+});
   
+
 //LOGOUT
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -61,46 +62,43 @@ router.post('/logout', (req, res) => {
   }
 });
 
+
 // SIGN UP
 router.post('/signup', async (req, res) => {
-// new user
-    const { name, email, password } = req.body
 
-console.log('Request body:', req.body);
+    const { name, email, password } = req.body
+console.log('Request body:', req.body)
 
   
-    if (!name || !email || !password) {
-
+  if (!name || !email || !password) {
 console.log('Missing fields:', { name, email, password });
-
-  return res.status(400).json({ message: 'All fields are required' });
+  return res.status(400).json({ message: 'All fields are required' })
   }
-// IF ALREADY EXIST IN DB
-try {
-  const existingUser = await User.findOne({ where: {email: req.body.email} });
+
+  // IF ALREADY EXIST IN DB
+  try {
+  const existingUser = await User.findOne({ where: {email} })
   if (existingUser) {
-
 console.log('User already exists with email:', email);
-
-  return res.status(400).json({ message: 'User already exists' });
+  return res.status(400).json({ message: 'User already exists' })
   }
-  // const hashedPassword = await bcrypt.hash(password, 10);
+
+  const hashedPassword = await bcrypt.hash(password, 10)
   const newUser = new User({
     name,
     email,
-    password
+    password: hashedPassword
   });
-
-console.log('New user:', newUser);
+console.log('New user:', newUser)
 
   await newUser.save();
-  res.status(201).json({ message: 'User created successfully' });
-} catch (error) {
+  res.status(201).json({ message: 'User created successfully' })
 
-console.error('Error creating user:', error);
-
-  res.status(500).json({ message: 'Error creating user', error });
-}
+  } catch (error) {
+    res.status(500).json({ message: 'Error creating user', error })
+console.error('Error creating user:', error)
+console.log('------------USER ROUTES LINEN 100------------------')
+  }
 })
 
 module.exports = router;

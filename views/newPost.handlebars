@@ -2,16 +2,28 @@
 
 <p>CREATE NEW POST</p>
 
+<form class="newpost-form">
+
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input class="form-control" id="title-post">
+        <input 
+        class="form-control" 
+        id="postTitle" 
+        type="text">
     </div>
 
     <div class="mb-3">
         <label for="content" class="form-label">Content</label>
-        <textarea class="form-control" id="content-post" rows="3"></textarea>
+        <textarea 
+        class="form-control" 
+        id="postContent" 
+        rows="3"
+        >
+        </textarea>
     </div>
 
-    <button>+ New Post</button>
+    <button id="postButton" type="submit"> Create New Post! </button>
+
+</form>
 
 </div>

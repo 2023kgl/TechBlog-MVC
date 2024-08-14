@@ -18,10 +18,10 @@ for each user  data --}}
     </div>
   </div>
   <br>
-  <h1 class="mb-4">HELLO</h1>
+  <h1 class="mb-4">WELCOME</h1>
   {{#each posts}}
     <div class="post-container post mb-3">
-      <h2><a href="/post/{{id}}" class="text-decoration-none text-reset">{{title}}</a></h2>
+      <h2><a href="/posts/{{id}}" class="text-decoration-none text-reset">{{title}}</a></h2>
       <p>Created by: {{user.username}} | Date: {{format_date createdAt}}</p>
       <a href="/editpost/{{id}}" class="btn btn-warning">Edit Post</a>
       <button class="btn btn-danger delete-post" data-post-id="{{id}}">Delete</button>

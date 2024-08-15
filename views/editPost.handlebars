@@ -1,2 +1,33 @@
+<div>
 
-<p>EDIT POST</p>
+  <h1 class="mb-4">Edit Post</h1>
+  <form class="updateForm" class="mb-3">
+
+    <div class="mb-3">
+      <label for="updateTitle" class="updateTitle">Title</label>
+      <input
+        type="text"
+        class="updateTitle"
+        id="updateTitle"
+        value="{{title}}"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="updateContent" class="updateContent">Content</label>
+      <textarea
+        class="updateContent"
+        id="updateContent"
+        rows="3"
+      >{{content}}
+      </textarea>
+    </div>
+
+    <button type="submit" id="updatePost" class="updatePost btn btn-primary">Update Post</button>
+    <button type="button" id="deletePost" class="deletePost btn btn-danger">Delete Post</button>
+
+  </form>
+
+</div>
+
+<script src="/js/editPost.js"></script>

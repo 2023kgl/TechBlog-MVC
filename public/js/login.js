@@ -3,9 +3,7 @@ const loginFormHandler = async (event) => {
 
   // GRAB USER INPUTS
   const email = document.querySelector('#email-login').value.trim();
-  console.log('Email:', email);
   const password = document.querySelector('#password-login').value.trim();
-  console.log('Password:', password);
 
   if (email && password) {
       try {
@@ -14,8 +12,6 @@ const loginFormHandler = async (event) => {
               body: JSON.stringify({ email, password }),
               headers: { 'Content-Type': 'application/json' },
           });
-
-          console.log('Response:', response);
 
           if (response.ok) {
               document.location.replace('/dashboard');

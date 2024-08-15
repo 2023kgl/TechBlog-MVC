@@ -10,10 +10,7 @@ router.get('/', async (req, res) => {
     try{
         const postData = await Post.findAll({ include: [{ model:User, attributes:['name']}]})
         res.status(200).json(postData);
-console.log('------------- POST ROUTES LINE 13-------------', postData);
-
     }catch (err) {
-      console.log('---------------- POST ROUTES LINE 15----------------------', err)
         res.status(500).json(err);
     }
 })
@@ -25,12 +22,8 @@ router.post("/", withAuth, async (req, res) => {
         ...req.body,
         user_id: req.session.user_id,
       });
-console.log('POST ROUTE LINE 28  User ID in session:', req.session.user_id);
-console.log('------------- post routes line 29 ------------',newPost);
-
       res.status(200).json(newPost)
     } catch (err) {
-console.log('----------- POST ROUTES LINE 32 ------------',err);
       res.status(400).json(err)
     }
 })
@@ -49,7 +42,6 @@ router.put("/:id", withAuth, async (req, res) => {
       res.status(200).json(updatedPost)
     } catch (err) {
       res.status(500).json(err);
-console.log('---------------- POST ROUTES LINE 46----------------------')
     }
 })
 
@@ -70,7 +62,6 @@ router.delete("/:id", withAuth, async (req, res) => {
       res.status(200).json(deletedPost);
     } catch (err) {
       res.status(500).json(err)
-console.log('---------------- POST ROUTES LINE 67----------------------')
     }
 })
 
@@ -93,7 +84,6 @@ router.get("/:id", async (req, res) => {
       res.status(200).json(postData)
     } catch (err) {
       res.status(500).json(err)
-console.log('---------------- POST ROUTES LINE 88----------------------')
     }
 })
 

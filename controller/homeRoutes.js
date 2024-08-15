@@ -17,7 +17,6 @@ router.get('/', async (req, res) => {
     })
   } catch (err) {
     res.status(500).json(err)
-console.log('----------------- HOME ROUTES LINE 20-------------')
   }    
 })
 
@@ -65,7 +64,6 @@ router.get('/post/:id', withAuth, async (req,res) => {
     res.render( 'post', {...post, logged_in: req.session.logged_in} )
   }catch (err) {
     res.status(500).json(err)
-console.log('----------------- HOME ROUTES LINE 68-------------')
   }
 })
 
@@ -75,56 +73,28 @@ router.get('/editpost/:id', async (req, res) => {
 try {
   const postData = await Post.findByPk(req.params.id, {
     include: [
-      { model: User, attributes: ['username']},
-      { model: Comment, include: [{ model: User, attributes: ['username']}]}
+      { model: User, attributes: ['name']},
+      { model: Comment, include: [{ model: User, attributes: ['name']}]}
       ]
   })
   const post = postData.get({plain: true})
   res.render('editpost', { ...post, logged_in: req.session.logged_in } )
 } catch (error) {
-  res.status(500).json(err)
-console.log('----------------- HOME ROUTES LINE 87-------------')
+  res.status(500).json(error)
   }
 })
 
 
 // RENDER DASHBOARD
-// router.get('/dashboard', withAuth, async (req, res) => {
-//   try {
-//     const postData = await Post.findAll({
-//       where: {user_id: req.session.user_id},
-//       include: [{ model: User, attributes: ['name']}]
-//     })
-// console.log('HOME ROUTES LINE 98 User ID in session:', req.session.user_id);
-// console.log('---- HOME ROUTES 99-----',postData);
-
-//     const post = postData.map((post) => post.get({plain: true}))
-//     res.render('dashboard', { post , logged_in: req.session.logged_in})
-//   } catch (err) {
-//     console.log('----------------- HOME ROUTES LINE 104-------------', err)
-//     res.status(500).json(err)
-//   }
-// })
-
-// RENDER DASHBOARD
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    console.log('HOME ROUTES: User ID in session:', req.session.user_id);
-
     const postData = await Post.findAll({
       where: { user_id: req.session.user_id },
       include: [{ model: User, attributes: ['name'] }],
     });
-
-    console.log('HOME ROUTES: Fetched postData:', postData);
-
     const posts = postData.map((post) => post.get({ plain: true }));
-
-    console.log('HOME ROUTES: Posts after mapping:', posts);
-
     res.render('dashboard', { posts, logged_in: req.session.logged_in });
   } catch (err) {
-    console.error('HOME ROUTES: Error in rendering dashboard:', err);
     res.status(500).json(err);
   }
 });

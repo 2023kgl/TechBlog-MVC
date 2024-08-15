@@ -67,36 +67,47 @@ router.get('/post/:id', withAuth, async (req,res) => {
   }
 })
 
+// TODO NOT WORKING !!!!!!
+// edit post page
+// router.get('/editpost/:id', async (req, res) => {
+// try {
+// console.log('-------------------------', req.params.id);
 
-// TO RENDER NEW POST
-router.get('/editpost/:id', async (req, res) => {
-try {
-  const postData = await Post.findByPk(req.params.id, {
-    include: [
-      { model: User, attributes: ['name']},
-      { model: Comment, include: [{ model: User, attributes: ['name']}]}
-      ]
-  })
-  const post = postData.get({plain: true})
-  res.render('editpost', { ...post, logged_in: req.session.logged_in } )
-} catch (error) {
-  res.status(500).json(error)
-  }
-})
+//   const postData = await Post.findByPk(req.params.id, {
+//     include: [
+//       { model: User, as: 'PostUser', attributes: ['name']},
+//       { model: Comment, as: 'Comments', include: [{ model: User, as: 'CommentUser', attributes: ['name']}]}
+//       ]
+//   })
+// console.log('------------------------------------------------',postData);
+
+//   const post = postData.get({plain: true})
+// console.log('---------------------------------------------------',post);
+
+//   res.render('editPost', { ...post, logged_in: req.session.logged_in } )
+// } catch (error) {
+//   console.log(' ---------------------------------- LINE 89 ',error);
+//   res.status(500).json(error)
+//   }
+// })
 
 
 // RENDER DASHBOARD
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
+
     const postData = await Post.findAll({
       where: { user_id: req.session.user_id },
       include: [{ model: User, attributes: ['name'] }],
     });
+
     const posts = postData.map((post) => post.get({ plain: true }));
+
     res.render('dashboard', { posts, logged_in: req.session.logged_in });
+
   } catch (err) {
     res.status(500).json(err);
   }
-});
+})
 
 module.exports = router;

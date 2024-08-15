@@ -1,7 +1,6 @@
-// grab id
-const post_id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
+// TODO NOT WORKING !!!!!!!!
+// grab id form url
+const post_id = window.location.toString().split("/").pop()
   
   // update post
   const updatePostHandler = async (event) => {
@@ -9,7 +8,7 @@ const post_id = window.location.toString().split("/")[
   
     const title = document.querySelector("#updateTitle").value.trim()
     const content = document.querySelector("#updateContent").value.trim()
-  
+
     if (title && content) {
       const response = await fetch(`/api/posts/${post_id}`, {
         method: "PUT",
@@ -25,20 +24,6 @@ const post_id = window.location.toString().split("/")[
     }
   }
 
-// delete
-const deletePostHandler = async (event) => {
-    event.preventDefault()
-  
-    const response = await fetch(`/api/posts/${post_id}`, {
-      method: "DELETE",
-    })
-  
-    if (response.ok) {
-      document.location.replace("/dashboard")
-    } else {
-      alert("Post not deleted"); 
-    }
-  }
+
 
 document.querySelector('.updatePost').addEventListener('submit', updatePostHandler)
-document.querySelector('.deletePost').addEventListener('submit', updatePostHandler)

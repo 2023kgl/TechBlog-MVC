@@ -1,27 +1,24 @@
-{{!-- build items you need 
+<div class="container">
 
-for each user  data --}}
-
-<div>
-  
-<p>DASHBOARD</p>
-
-  <div class="row">
+  <div class="row mb-4 align-items-center">
     <div class="col-12">
-      <h1 class="mb-4">Dashboard</h1>
-      <a href="/newpost" class="btn btn-primary">Create a New Blog Post</a>
+      <h1 class="mb-4 text-left">Welcome {{posts.[0].user.name}} to your Dashboard</h1>
+      <a href="/newpost" class="btn btn-primary text-right">Create a New Blog Post</a>
     </div>
+
   </div>
-  <br>
-  <h1 class="mb-4">WELCOME</h1>
+
   {{#each posts}}
-    <div class="post-container post mb-3">
+    <div class="post-container post mb-3 border p-3 rounded">
       <h2><a href="/posts/{{id}}" class="text-decoration-none text-reset">{{title}}</a></h2>
       <p>{{content}}</p>
-      <p>Created by: {{name}} | Date:</p>
-      <a href="/editpost/{{id}}" class="btn btn-warning">Edit Post</a>
-      <button class="btn btn-danger delete-post" data-post-id="{{id}}">Delete</button>
+      <p class="text-muted">Created by: {{name}} | Date: {{date}}</p>
+      <div class="d-flex justify-content-start mt-2">
+        <a href="/editpost/{{id}}" class="btn btn-warning me-2">Edit Post</a>
+        <button class="btn btn-danger deletePost" id="deletePost" data-post-id="{{id}}">Delete</button>
+      </div>
     </div>
   {{/each}}
-
 </div>
+
+<script src="/js/deletePost.js"></script>

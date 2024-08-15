@@ -1,21 +1,24 @@
-<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+<div class="container mt-5">
+  <!-- Heading Row -->
+  <div class="row mb-4">
+    <div class="col text-center">
+      <h1>HOMEPAGE</h1>
+    </div>
+  </div>
 
-<div class="row">
-<h1>HOMEPAGE</h1>
-</div>
-
-<div class="col">
-{{#each posts as |post| }}
-<div class="card row" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">
-    <a href="/post/{{id}}" class="text-dark">{{title}}</a>
-    </h5>
-    <p class="card-text">{{content}}.</p>
+  <!-- Posts Row -->
+  <div class="row">
+    {{#each posts as |post| }}
+      <div class="col-12 mb-4">
+        <div class="card" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/post/{{id}}" class="text-dark">{{title}}</a>
+            </h5>
+            <p class="card-text">Date Created</p>
+          </div>
+        </div>
+      </div>
+    {{/each}}
   </div>
 </div>
-{{/each}}
-</div>
-
-</div>
-

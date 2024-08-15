@@ -26,7 +26,7 @@ router.post("/", withAuth, async (req, res) => {
         user_id: req.session.user_id,
       });
 console.log('POST ROUTE LINE 28  User ID in session:', req.session.user_id);
-console.log(newPost);
+console.log('------------- post routes line 29 ------------',newPost);
 
       res.status(200).json(newPost)
     } catch (err) {

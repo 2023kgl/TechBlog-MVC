@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
     }
 
   req.session.save(() => {
-    req.session.user_id = userData.user_id;
+    req.session.user_id = userData.id;
     req.session.logged_in = true;
     res
     .status(200)
@@ -83,11 +83,10 @@ console.log('User already exists with email:', email);
   return res.status(400).json({ message: 'User already exists' })
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10)
   const newUser = new User({
     name,
     email,
-    password: hashedPassword
+    password
   });
 console.log('New user:', newUser)
 

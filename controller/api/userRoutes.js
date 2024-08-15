@@ -16,12 +16,12 @@ router.get('/', async (req, res) => {
 // LOG IN USER 
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: {email:req.body.email}})
+    const userData = await User.findOne({ where: {username:req.body.username}})
 
     if (!userData) {
       res
       .status(400)
-      .json({ message: "Incorrect email"});
+      .json({ message: "Incorrect username"});
     return;
     }
 
@@ -63,27 +63,33 @@ router.post('/logout', (req, res) => {
 // SIGN UP
 router.post('/signup', async (req, res) => {
 
-    const { name, email, password } = req.body
+    const { username, password } = req.body
 
-  if (!name || !email || !password) {
+  if (!username|| !password) {
   return res.status(400).json({ message: 'All fields are required' })
   }
 
   // IF ALREADY EXIST IN DB
   try {
-  const existingUser = await User.findOne({ where: {email} })
+  const existingUser = await User.findOne({ where: {username} })
   if (existingUser) {
   return res.status(400).json({ message: 'User already exists' })
   }
 
   const newUser = new User({
-    name,
-    email,
+    username,
     password
   });
 
   await newUser.save();
-  res.status(201).json({ message: 'User created successfully' })
+
+  req.session.save(() => {
+    req.session.user_id = newUser.id;
+    req.session.logged_in = true;
+    res
+    .status(200)
+    .json({ user: newUser, message: "LOG IN SUCCESSFUL" });
+    });
 
   } catch (error) {
     res.status(500).json({ message: 'Error creating user', error })

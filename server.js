@@ -16,7 +16,7 @@ const hbs = exphbs.create({ helpers , defaultLayout: 'main' });
 const sess = {
   secret: 'Super secret secret',
   cookie: {
-    maxAge: 60 * 60 * 1000,
+    maxAge: 5 * 60 * 60 * 1000,
   },
   resave: false,
   saveUninitialized: false,
@@ -34,6 +34,6 @@ app.set('view engine', 'handlebars');
 
 app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });

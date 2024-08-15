@@ -44,8 +44,8 @@ THEN I am prompted to create a username and password -->
 THEN my user credentials are saved and I am logged into the site -->
 
 <!-- TODO CHANGE THE EMAIL TO USERNAME TO LOG IN -->
-WHEN I revisit the site at a later time and choose to sign in
-THEN I am prompted to enter my username and password
+<!-- WHEN I revisit the site at a later time and choose to sign in
+THEN I am prompted to enter my username and password -->
 
 <!-- WHEN I am signed in to the site
 THEN I see navigation links for the homepage, the dashboard, and the option to log out -->
@@ -80,8 +80,8 @@ THEN I am able to delete or update my post and taken back to an updated dashboar
 THEN I am signed out of the site -->
 
 <!-- TODO -->
-WHEN I am idle on the site for more than a set time
-THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
+<!-- WHEN I am idle on the site for more than a set time
+THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts -->
 ```
 
 

@@ -11,13 +11,13 @@ I also used dotenv, bcrypt, express-session, and connect-session-sequelize for t
 
 ## Installation
 
-EXPRESS HANDLEBARS (npm install express-handlebars)
-PG (npm install pg)
-SEQUELIZE (npm i sequelize)
-DOTENV (npm install dotenv --save)
-BCRYPT ((npm install bcrypt))
-EXPRESS-SESSION (npm install express-session)
-CONNECT-SESSION-SEQUELIZE (npm install connect-session-sequelize)
+- EXPRESS HANDLEBARS (npm install express-handlebars)
+- PG (npm install pg)
+- SEQUELIZE (npm i sequelize)
+- DOTENV (npm install dotenv --save)
+- BCRYPT ((npm install bcrypt))
+- EXPRESS-SESSION (npm install express-session)
+- CONNECT-SESSION-SEQUELIZE (npm install connect-session-sequelize)
 
 If you would like to clone this repo, run npm install and it should install all the packages listed in package.json.
 npm start in the terminal will initialize the server.

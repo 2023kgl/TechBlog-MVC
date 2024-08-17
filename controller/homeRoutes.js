@@ -64,7 +64,6 @@ router.get('/posts/:id', withAuth, async (req,res) => {
     res.render( 'singlePost', {...post, logged_in: req.session.logged_in} )
 
   }catch (err) {
-    console.log('--------- HOME ROUTES LINE 62 -----------', err)
     res.status(500).json(err)
   }
 })

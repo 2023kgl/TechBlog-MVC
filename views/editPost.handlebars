@@ -1,7 +1,7 @@
 <div>
 
   <h1 class="mb-4">Edit Post</h1>
-    <form class="updateForm" class="mb-3">
+    <form class="updatePost" class="mb-3">
 
       <div class="mb-3">
         <label for="updateTitle" class="updateTitle">Title</label>
@@ -24,8 +24,7 @@
     </div>
 
       <div class="d-flex justify-content-start mt-2">
-        {{!-- <a href="/editpost/{{id}}" class="btn btn-warning me-2">Edit Post</a> --}}
-        <button class="btn btn-warning editPost" id="editPost" data-post-id="{{id}}">Edit</button>
+        <button class="btn btn-warning editPost" id="editPost" data-post-id="{{id}}">Save Post updates</button>
         <button class="btn btn-danger deletePost" id="deletePost" data-post-id="{{id}}">Delete</button>
       </div>
 
@@ -34,4 +33,4 @@
 </div>
 
 <script src="/js/editPost.js"></script>
-<script src="/js/delePost.js"></script>
+<script src="/js/deletePost.js"></script>

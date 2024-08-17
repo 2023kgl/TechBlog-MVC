@@ -1,8 +1,5 @@
-// TODO NOT WORKING !!!!!!!!
-// grab id form url
 const post_id = window.location.toString().split("/").pop()
   
-  // update post
   const updatePostHandler = async (event) => {
     event.preventDefault()
   
@@ -18,12 +15,12 @@ const post_id = window.location.toString().split("/").pop()
   
       if (response.ok) {
         document.location.replace("/dashboard")
+
       } else {
         alert("Failed to update post")
       }
+      
     }
   }
-
-
 
 document.querySelector('.updatePost').addEventListener('submit', updatePostHandler)

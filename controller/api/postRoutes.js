@@ -28,10 +28,8 @@ router.post('/', withAuth, async (req, res) => {
     }
 })
 
-// TODO NOT WORKING !!!!!!
 // UPDATE POST
 router.put('/:id', withAuth, async (req, res) => {
-console.log('-------------POST ROUTES LINE 33---------------------------');
 
     try {
       const updatedPost = await Post.update(req.body, {
@@ -43,8 +41,8 @@ console.log('-------------POST ROUTES LINE 33---------------------------');
         return;
       }
       res.status(200).json(updatedPost)
+
     } catch (err) {
-console.log('----------------- POST ROUTES LINE 46----------------------- ', err);
       res.status(500).json(err);
     }
 })
@@ -53,15 +51,10 @@ console.log('----------------- POST ROUTES LINE 46----------------------- ', err
 // DELETE POST
 router.delete('/:id', withAuth, async (req, res) => {
     try {
-//       await Comment.destroy({
-//         where: { post_id: req.params.id },
-//       });
-// console.log('------ post route 58 ------' , req.params.id);
 
       const deletedPost = await Post.destroy({
         where: { id: req.params.id },
       })
-console.log('----- post route line 61 -------', req.params.id)
 
       if (!deletedPost) {
         res.status(404).json({ message: 'POST NOT FOUND/DELETED' })
@@ -70,7 +63,6 @@ console.log('----- post route line 61 -------', req.params.id)
       res.status(200).json(deletedPost)
     } catch (err) {
       res.status(500).json(err)
-console.log('------ post route line 72 ---------' , err)
 
     }
 })

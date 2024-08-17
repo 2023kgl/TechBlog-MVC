@@ -11,11 +11,7 @@
 
   {{#each posts}}
     <div class="post-container post mb-3 border p-3 rounded">
-
       <h2><a href="/editpost/{{id}}" class="text-decoration-none text-reset">{{title}}</a></h2>
-
-      {{!-- <a href="/editpost/{{id}}" class="btn btn-warning me-2">Edit Post</a> --}}
-
       <p>{{content}}</p>
       <p class="text-muted">Created by: {{user.username}} | Date:{{createdAt}}</p>
       <div class="d-flex justify-content-start mt-2">

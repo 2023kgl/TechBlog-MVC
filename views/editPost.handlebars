@@ -1,35 +1,30 @@
-<div>
-
+<div class="container mt-4">
   <h1 class="mb-4">Edit Post</h1>
-    <form class="updatePost" class="mb-3">
-
-      <div class="mb-3">
-        <label for="updateTitle" class="updateTitle">Title</label>
-          <input
-            type="text"
-            class="updateTitle"
-            id="updateTitle"
-            value="{{title}}"
-          />
-      </div>
-
+  <form class="updatePost">
     <div class="mb-3">
-      <label for="updateContent" class="updateContent">Content</label>
-      <textarea
-        class="updateContent"
-        id="updateContent"
-        rows="3"
-      >{{content}}
-      </textarea>
+      <label for="updateTitle" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="updateTitle"
+        value="{{title}}"
+      />
     </div>
 
-      <div class="d-flex justify-content-start mt-2">
-        <button class="btn btn-warning editPost" id="editPost" data-post-id="{{id}}">Save Post updates</button>
-        <button class="btn btn-danger deletePost" id="deletePost" data-post-id="{{id}}">Delete</button>
-      </div>
+    <div class="mb-3">
+      <label for="updateContent" class="form-label">Content</label>
+      <textarea
+        class="form-control"
+        id="updateContent"
+        rows="3"
+      >{{content}}</textarea>
+    </div>
 
+    <div class="d-flex justify-content-start mt-2">
+      <button class="btn btn-success me-2" id="editPost" data-post-id="{{id}}">Save Post Updates</button>
+      <button class="btn btn-danger" id="deletePost" data-post-id="{{id}}">Delete</button>
+    </div>
   </form>
-
 </div>
 
 <script src="/js/editPost.js"></script>

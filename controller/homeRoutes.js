@@ -48,7 +48,7 @@ router.get('/newpost', (req, res) => {
 
 
 // TO RENDER SINGLE POST 
-router.get('/post/:id', withAuth, async (req,res) => {
+router.get('/posts/:id', withAuth, async (req,res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
       include: [
@@ -56,9 +56,22 @@ router.get('/post/:id', withAuth, async (req,res) => {
         { model: Comment, include: [{ model: User, attributes: ['username']}]}
       ]
     })
-    const post = postData.map((post) => post.get({plain: true}))
-    res.render( 'post', {...post, logged_in: req.session.logged_in} )
+
+      // Check if postData exists
+      if (!postData) {
+        res.status(404).json({ message: 'No post found with this id!' });
+        return;
+      }
+
+       // Convert the Sequelize instance to a plain object
+    const post = postData.get({ plain: true });
+
+    // const post = postData.map((post) => post.get({plain: true}))
+
+    res.render( 'singlePost', {...post, logged_in: req.session.logged_in} )
+
   }catch (err) {
+    console.log('--------- HOME ROUTES LINE 62 -----------', err)
     res.status(500).json(err)
   }
 })

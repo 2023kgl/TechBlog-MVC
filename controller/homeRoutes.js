@@ -69,29 +69,28 @@ router.get('/posts/:id', withAuth, async (req,res) => {
   }
 })
 
-// TODO NOT WORKING !!!!!!
+
 // edit post page
-// router.get('/editpost/:id', async (req, res) => {
-// try {
-// console.log('-------------------------', req.params.id);
+router.get('/editpost/:id', async (req, res) => {
 
-//   const postData = await Post.findByPk(req.params.id, {
-//     include: [
-//       { model: User, as: 'PostUser', attributes: ['username']},
-//       { model: Comment, as: 'Comments', include: [{ model: User, as: 'CommentUser', attributes: ['username']}]}
-//       ]
-//   })
-// console.log('------------------------------------------------',postData);
+try {
 
-//   const post = postData.get({plain: true})
-// console.log('---------------------------------------------------',post);
+  const postData = await Post.findByPk(req.params.id, {
+    include: [
+      { model: User, attributes: ['username']},
+      { model: Comment, include: [{ model: User, attributes: ['username']}]}
+      ]
+  })
 
-//   res.render('editPost', { ...post, logged_in: req.session.logged_in } )
-// } catch (error) {
-//   console.log(' ---------------------------------- LINE 89 ',error);
-//   res.status(500).json(error)
-//   }
-// })
+  const post = postData.get({plain: true})
+
+  res.render('editPost', { ...post, logged_in: req.session.logged_in } )
+
+} catch (error) {
+  res.status(500).json(error)
+  }
+
+})
 
 
 // RENDER DASHBOARD

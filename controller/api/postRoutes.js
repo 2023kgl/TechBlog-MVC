@@ -30,24 +30,24 @@ router.post('/', withAuth, async (req, res) => {
 
 // TODO NOT WORKING !!!!!!
 // UPDATE POST
-// router.put("/:id", withAuth, async (req, res) => {
-// console.log('-------------POST ROUTES LINE 33---------------------------');
+router.put('/:id', withAuth, async (req, res) => {
+console.log('-------------POST ROUTES LINE 33---------------------------');
 
-//     try {
-//       const updatedPost = await Post.update(req.body, {
-//         where: { id: req.params.id },
-//       });
+    try {
+      const updatedPost = await Post.update(req.body, {
+        where: { id: req.params.id },
+      });
   
-//       if (!updatedPost) {
-//         res.status(404).json({ message: "POST NOT FOUND/UPDATED" })
-//         return;
-//       }
-//       res.status(200).json(updatedPost)
-//     } catch (err) {
-// console.log('----------------- POST ROUTES LINE 46----------------------- ', err);
-//       res.status(500).json(err);
-//     }
-// })
+      if (!updatedPost) {
+        res.status(404).json({ message: "POST NOT FOUND/UPDATED" })
+        return;
+      }
+      res.status(200).json(updatedPost)
+    } catch (err) {
+console.log('----------------- POST ROUTES LINE 46----------------------- ', err);
+      res.status(500).json(err);
+    }
+})
 
 // TODO NOT DELETING !!!!!
 // DELETE POST

@@ -1,17 +1,17 @@
 <div>
 
   <h1 class="mb-4">Edit Post</h1>
-  <form class="updateForm" class="mb-3">
+    <form class="updateForm" class="mb-3">
 
-    <div class="mb-3">
-      <label for="updateTitle" class="updateTitle">Title</label>
-      <input
-        type="text"
-        class="updateTitle"
-        id="updateTitle"
-        value="{{title}}"
-      />
-    </div>
+      <div class="mb-3">
+        <label for="updateTitle" class="updateTitle">Title</label>
+          <input
+            type="text"
+            class="updateTitle"
+            id="updateTitle"
+            value="{{title}}"
+          />
+      </div>
 
     <div class="mb-3">
       <label for="updateContent" class="updateContent">Content</label>
@@ -23,11 +23,15 @@
       </textarea>
     </div>
 
-    <button type="submit" id="updatePost" class="updatePost btn btn-primary">Update Post</button>
-    <button type="button" id="deletePost" class="deletePost btn btn-danger">Delete Post</button>
+      <div class="d-flex justify-content-start mt-2">
+        {{!-- <a href="/editpost/{{id}}" class="btn btn-warning me-2">Edit Post</a> --}}
+        <button class="btn btn-warning editPost" id="editPost" data-post-id="{{id}}">Edit</button>
+        <button class="btn btn-danger deletePost" id="deletePost" data-post-id="{{id}}">Delete</button>
+      </div>
 
   </form>
 
 </div>
 
 <script src="/js/editPost.js"></script>
+<script src="/js/delePost.js"></script>

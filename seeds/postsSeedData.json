@@ -1,14 +1,53 @@
 [
     {
-        "title" : "tech-blog",
-        "content" : "first post"
-    },
-    {
-        "title" : "HELLO",
-        "content" : "second post"
-    },
-    {
-        "title" : "WORLD",
-        "content" : "third post"
-    }
+        "title": "Understanding the Basics of Machine Learning",
+        "content": "This post dives into the fundamentals of machine learning and its applications in various industries.",
+        "user_id": 1
+      },
+      {
+        "title": "Getting Started with React.js",
+        "content": "An introductory guide to building user interfaces with React.js, one of the most popular JavaScript libraries.",
+        "user_id": 2
+      },
+      {
+        "title": "The Rise of Artificial Intelligence",
+        "content": "Exploring the impact of AI on society and the potential it holds for the future.",
+        "user_id": 3
+      },
+      {
+        "title": "Best Practices for Securing Your Web Applications",
+        "content": "Learn essential techniques to safeguard your web applications from common security threats.",
+        "user_id": 4
+      },
+      {
+        "title": "A Beginner's Guide to DevOps",
+        "content": "Discover the principles of DevOps and how it can streamline the development and deployment process.",
+        "user_id": 5
+      },
+      {
+        "title": "Introduction to Cloud Computing",
+        "content": "Understand the basics of cloud computing and how it revolutionizes data storage and access.",
+        "user_id": 6
+      },
+      {
+        "title": "How Blockchain is Transforming Industries",
+        "content": "An overview of blockchain technology and its transformative effects on various sectors.",
+        "user_id": 7
+      },
+      {
+        "title": "Building Scalable Applications with Microservices",
+        "content": "Learn how to design and implement scalable applications using a microservices architecture.",
+        "user_id": 8
+      },
+      {
+        "title": "Exploring the Future of Quantum Computing",
+        "content": "An in-depth look at quantum computing and its potential to solve complex problems beyond the reach of classical computers.",
+        "user_id": 9
+      },
+      {
+        "title": "Top Programming Languages to Learn in 2024",
+        "content": "A guide to the most in-demand programming languages and why you should consider learning them.",
+        "user_id": 10
+      }
+      
 ]

@@ -1,11 +1,53 @@
 [
     {
-        "comment" : "MVC"
-    },
-    {
-        "comment" : "DATABASE"
-    },
-    {
-        "comment" : "ROUTES"
-    }
+        "comment_text": "This new framework is a game-changer!",
+        "user_id": 2,
+        "post_id": 1
+      },
+      {
+        "comment_text": "I love how you explained the microservices architecture.",
+        "user_id": 3,
+        "post_id": 1
+      },
+      {
+        "comment_text": "Can't wait to try out these coding tips.",
+        "user_id": 4,
+        "post_id": 2
+      },
+      {
+        "comment_text": "The future of AI looks promising!",
+        "user_id": 5,
+        "post_id": 2
+      },
+      {
+        "comment_text": "This guide on DevOps practices was super helpful!",
+        "user_id": 6,
+        "post_id": 3
+      },
+      {
+        "comment_text": "Blockchain technology is fascinating!",
+        "user_id": 7,
+        "post_id": 3
+      },
+      {
+        "comment_text": "Thanks for the security best practices. Very insightful!",
+        "user_id": 8,
+        "post_id": 4
+      },
+      {
+        "comment_text": "Cloud computing is definitely the way forward.",
+        "user_id": 9,
+        "post_id": 4
+      },
+      {
+        "comment_text": "I finally understand Docker after reading this.",
+        "user_id": 10,
+        "post_id": 5
+      },
+      {
+        "comment_text": "Amazing breakdown of the latest tech trends!",
+        "user_id": 1,
+        "post_id": 5
+      }
+      
 ]

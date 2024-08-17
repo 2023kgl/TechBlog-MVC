@@ -51,8 +51,8 @@ THEN I am prompted to enter my username and password -->
 THEN I see navigation links for the homepage, the dashboard, and the option to log out -->
 
 <!-- TODO ADD DATE CREATED -->
-WHEN I click on the homepage option in the navigation
-THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
+<!-- WHEN I click on the homepage option in the navigation
+THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created -->
 
 <!-- TODO  -->
 WHEN I click on an existing blog post

@@ -1,22 +1,53 @@
 [
-    {
-      "username": "john_doe",
-      "password": "password123"
-    },
-    {
-      "username": "jane_smith",
-      "password": "password123"
-    },
-    {
-      "username": "alice_jones",
-      "password": "password123"
-    },
-    {
-      "username": "bob_brown",
-      "password": "password123"
-    },
-    {
-      "username": "charlie_black",
-      "password": "password123"
-    }
+  {
+    "username": "techguru",
+    "email": "techguru@example.com",
+    "password": "securepass123"
+  },
+  {
+    "username": "coderqueen",
+    "email": "coderqueen@example.com",
+    "password": "qwerty987"
+  },
+  {
+    "username": "devmaster",
+    "email": "devmaster@example.com",
+    "password": "codewizard456"
+  },
+  {
+    "username": "aiwhiz",
+    "email": "aiwhiz@example.com",
+    "password": "machinelearn789"
+  },
+  {
+    "username": "cloudbuilder",
+    "email": "cloudbuilder@example.com",
+    "password": "skyhigh321"
+  },
+  {
+    "username": "blockchainboss",
+    "email": "blockchainboss@example.com",
+    "password": "crypto789"
+  },
+  {
+    "username": "uxninja",
+    "email": "uxninja@example.com",
+    "password": "designpro123"
+  },
+  {
+    "username": "datawizard",
+    "email": "datawizard@example.com",
+    "password": "datamaster654"
+  },
+  {
+    "username": "securitygeek",
+    "email": "securitygeek@example.com",
+    "password": "safepass789"
+  },
+  {
+    "username": "quantumthinker",
+    "email": "quantumthinker@example.com",
+    "password": "qubit567"
+  }
+  
   ]

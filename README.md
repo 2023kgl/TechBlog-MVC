@@ -28,6 +28,9 @@ If building a similar tech blog from scratch, copy and paste the installs listed
 
 To use my tech blog, simply follow the deployed link from render and start using.
 
+https://techblog-mvc-w5yl.onrender.com/
+
+
 ![HOMPAGE](assets/images/hompage.png)
 ![SINGLE POST PAGE](assets/images/singlepostpage.png)
 ![DASHBOARD](assets/images/dashboard.png)
